@@ -10,6 +10,9 @@
   grid-template-rows: 60px 1fr;
   grid-template-columns: 2fr 10fr;
   /* grid-gap: 10px; */
+}
 
-
+.app-wrapper-content {
+    grid-area: c;
+    background-color: rgb(120, 194, 196);
 }
