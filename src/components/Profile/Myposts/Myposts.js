@@ -3,17 +3,17 @@ import React from "react";
 import c from './Myposts.module.css'
 import Post from './post/Post'
 
-let postsData = [
-    {postText: "wow", post: 1, like: '0'},
-    {postText: "this", post: 2, like: '323'},
-    {postText: "stena", post: 3, like: '2'}
+// let postsData = [
+//     {postText: "wow", post: 1, like: '0'},
+//     {postText: "this", post: 2, like: '323'},
+//     {postText: "stena", post: 3, like: '2'}
 
-]
+// ]
 
-let postsElements = postsData.map(post => <Post message={post.postText} like={post.like}/>
-)
 
-const Myposts = () => { 
+const Myposts = (props) => { 
+    let postsElements = props.posts.map(post => <Post message={post.postText} like={post.like}/>)
+
     return (<div>My posts
         <div>
              <textarea>Write your post...</textarea>
