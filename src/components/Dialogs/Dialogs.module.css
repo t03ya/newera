@@ -2,10 +2,32 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     padding: 10px;
-    
+
 }
 
 .dialogItem a{
     text-decoration: none;
-   
 }
+
+/* .textAreaStyle {
+    padding: 10px;
+    display:grid;
+    -ms-grid-row-align: end;
+} */
+
+.textAreaStyle {
+    display: grid;
+    margin-top: 20px;
+    grid-auto-rows: 100px;
+    grid-template-areas:
+      "a"
+      "b";
+    align-items: start;
+  }
+  .text {
+    grid-area: a;
+  }
+  .button {
+    grid-area: b;
+  }
+

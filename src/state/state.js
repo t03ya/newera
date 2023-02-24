@@ -15,12 +15,17 @@ let state = {
     {
         dialogsData: [
             { name: "Dimas", id: 1 },
-            { name: "Vasya", id: 2 }
+            { name: "Vasya", id: 2 },
+            { name: "Vasya", id: 3 },
+            { name: "Vasya", id: 4 },
         ],
 
         messagesData: [
             { messageText: "His", id: 1 },
-            { messageText: "How are you", id: 2 }
+            { messageText: "How are you", id: 2 },
+            { messageText: "How are you", id: 3 },
+            { messageText: "How are you", id: 4 },
+            { messageText: "How are you", id: 5 }
         ],
     }
 

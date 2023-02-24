@@ -5,23 +5,33 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 
+let dialogRef = React.createRef();
+
+let newDialog = () => {
+    let text = dialogRef.current.value;
+    alert(text);
+}
+
 const Dialogs = (props) => {
     let dialogsElements = props.dialogsPage.dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />)
     let messagesElements = props.dialogsPage.messagesData.map(message => <Message messageText={message.messageText} />)
+
     return (
         <div className={s.dialogStyle}>
             <div className={s.dialogs}>
-                {/* <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} /> */}
                 {dialogsElements}
             </div>
             <div className={s.messages}>
-                {/* <Message messageText={messagesData[0].messageText} />
-                <Message messageText={messagesData[1].messageText} /> */}
                 {messagesElements}
+            </div>
+            <div className={s.textAreaStyle}>
+                <textarea ref={dialogRef} name="" id="" rows="5" className={s.text}>D</textarea>
+                <button onClick={newDialog} className={s.button}>Send</button>
             </div>
         </div>
     )
 }
+
+
 
 export default Dialogs;
