@@ -13,11 +13,15 @@ const Myposts = (props) => {
         props.addPost(postRef.current.value);
     }
 
-    let postsElements = props.posts.map(post => <Post message={post.postText} like={post.like} />)
+    let onPostChange = () => {
+        props.updatePost(postRef.current.value);
+    }
+
+    let postsElements = props.posts.postsData.map(post => <Post message={post.postText} like={post.like} />)
     return (
         <div>My posts
             <div>
-                <textarea ref={postRef}>Write your post...</textarea>
+                <textarea ref={postRef} value={props.posts.postUpdate.postText} onChange={onPostChange}></textarea>
                 <div><button onClick={addPost}>New post</button></div>
             </div>
 

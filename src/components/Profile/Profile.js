@@ -7,7 +7,7 @@ import { addPost } from '../../state/state';
 const Profile = (props) => {
     return (<div className={c.content}>
         <ProfileInfo />
-        <Myposts posts={props.profilePage.postsData} addPost={props.addPost}/>
+        <Myposts posts={props.profilePage} addPost={props.addPost} updatePost={props.updatePost}/>
     </div>)
 }
 

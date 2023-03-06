@@ -4,9 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import state from './state/state';
-import { addPost } from './state/state';
-import { rerenderEntireTree } from './render';
+import { addPost, subscribe, updatePost } from './state/state';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+export let rerenderEntireTree = () => {
+    root.render(
+      <React.StrictMode>
+        <App state={state} addPost={addPost} updatePost={updatePost}/>
+      </React.StrictMode>
+    );
+  }
 
 rerenderEntireTree(state);
+
+subscribe(rerenderEntireTree);
 
 reportWebVitals();
