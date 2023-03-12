@@ -1,75 +1,92 @@
 
-let store = () => {
-    
-}
+let store = {
+    _state: {
+        profilePage:
+        {
 
+            postsData: [
+                { postText: "wosws", post: 1, like: '0' },
+                { postText: "this", post: 2, like: '323' },
+                { postText: "stena", post: 3, like: '2' }
+            ],
 
-let rerenderEntireTree = () => {
-    console.log('state changed!');
-}
+            postUpdate: [
+                { postText: "salam" }
+            ]
 
+        },
 
+        dialogsPage:
+        {
+            dialogsData: [
+                { name: "Dimas", id: 1 },
+                { name: "Vasya", id: 2 },
+                { name: "Vasya", id: 3 },
+                { name: "Vasya", id: 4 },
+            ],
 
-let state = {
-    profilePage:
-    {
-
-        postsData: [
-            { postText: "wosws", post: 1, like: '0' },
-            { postText: "this", post: 2, like: '323' },
-            { postText: "stena", post: 3, like: '2' }
-        ],
-
-        postUpdate: [
-            { postText: "salam" }
-        ]
-
+            messagesData: [
+                { messageText: "His", id: 1 },
+                { messageText: "How are you", id: 2 },
+                { messageText: "How are you", id: 3 },
+                { messageText: "How are you", id: 4 },
+                { messageText: "How are you", id: 5 }
+            ]
+        }
     },
 
-    dialogsPage:
-    {
-        dialogsData: [
-            { name: "Dimas", id: 1 },
-            { name: "Vasya", id: 2 },
-            { name: "Vasya", id: 3 },
-            { name: "Vasya", id: 4 },
-        ],
+    _callSubscriber() {
+        console.log('state changed!')
+    },
 
-        messagesData: [
-            { messageText: "His", id: 1 },
-            { messageText: "How are you", id: 2 },
-            { messageText: "How are you", id: 3 },
-            { messageText: "How are you", id: 4 },
-            { messageText: "How are you", id: 5 }
-        ],
-    }
+    getState() {
+        return this._state;
+    },
 
+    setState() {
+        this._state = this._state;
+    },
+
+    addPost() {
+        let newPost = {
+            post: 1,
+            postText: this._state.profilePage.postUpdate.postText,
+            like: 3
+        }
+        this._state.profilePage.postsData.push(newPost);
+        this._callSubscriber(this._state);
+        this._state.profilePage.postUpdate.postText = '';
+    },
+
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
+    updatePost(postText) {
+        this._state.profilePage.postUpdate.postText = postText;
+        this._callSubscriber(this._state);
+    },
+
+    dispatch(action) {
+        if(action.type === 'ADD-POST')
+        {
+            let newPost = {
+                post: 1,
+                postText: this._state.profilePage.postUpdate.postText,
+                like: 3
+            }
+            this._state.profilePage.postsData.push(newPost);
+            this._callSubscriber(this._state);
+            this._state.profilePage.postUpdate.postText = '';
+        } else if (action.type === 'UPDATE-POST-TEXT')
+        {
+            
+            this._state.profilePage.postUpdate.postText = action.text;
+            this._callSubscriber(this._state);
+        }
+    },
 }
 
 
-export const addPost = (postMessage) => {
-
-    let newPost = {
-        post: 1,
-        postText: postMessage,
-        like: 3
-    }
-    state.profilePage.postsData.push(newPost);
-    rerenderEntireTree(state);
-    // state.profilePage.newPost.postText = '';
-}
-
-
-
-export const subscribe = (observer) => {
-    rerenderEntireTree = observer;
-}
-
-export const updatePost = (postText) => {
-    state.profilePage.postUpdate.postText = postText;
-    rerenderEntireTree(state);
-}
-
-
-window.state = state;
-export default state;
+window.store = store;
+export default store;

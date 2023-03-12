@@ -3,20 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from './state/state';
-import { addPost, subscribe, updatePost } from './state/state';
+import store from './state/state';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenderEntireTree = () => {
     root.render(
       <React.StrictMode>
-        <App state={state} addPost={addPost} updatePost={updatePost}/>
+        <App state={store.getState()} dispatch={store.dispatch.bind(store)}
+        addPost={store.addPost.bind(store)} updatePost={store.updatePost.bind(store)}/>
       </React.StrictMode>
     );
   }
 
-rerenderEntireTree(state);
+rerenderEntireTree(store.getState());
 
-subscribe(rerenderEntireTree);
+store.subscribe(rerenderEntireTree);
 
 reportWebVitals();
