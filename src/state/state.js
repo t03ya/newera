@@ -10,9 +10,8 @@ let store = {
                 { postText: "stena", post: 3, like: '2' }
             ],
 
-            postUpdate: [
-                { postText: "salam" }
-            ]
+            postUpdate: { postText: "salam" }
+
 
         },
 
@@ -68,6 +67,7 @@ let store = {
     },
 
     dispatch(action) {
+        console.log('99', this)
         if(action.type === 'ADD-POST')
         {
             let newPost = {
@@ -80,7 +80,7 @@ let store = {
             this._state.profilePage.postUpdate.postText = '';
         } else if (action.type === 'UPDATE-POST-TEXT')
         {
-            
+
             this._state.profilePage.postUpdate.postText = action.text;
             this._callSubscriber(this._state);
         }

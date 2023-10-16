@@ -16,12 +16,15 @@ const Myposts = (props) => {
 
     let onPostChange = () => {
         //props.updatePost(postRef.current.value);
+
         let text = postRef.current.value;
         props.dispatch({type: 'UPDATE-POST-TEXT', text: text});
     }
 
+    //console.log(props.posts.postUpdate[0].postText)
     let postsElements = props.posts.postsData.map(post => <Post message={post.postText} like={post.like} />)
     return (
+
         <div>My posts
             <div>
                 <textarea ref={postRef} value={props.posts.postUpdate.postText} onChange={onPostChange}></textarea>
