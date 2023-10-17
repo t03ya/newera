@@ -9,7 +9,7 @@ const Myposts = (props) => {
 
     let postRef = React.createRef();
 
-    let addPost = () => {
+    const addPost = () => {
         //props.addPost(postRef.current.value);
         props.dispatch( {type: 'ADD-POST'} );
     }
@@ -22,7 +22,7 @@ const Myposts = (props) => {
     }
 
     //console.log(props.posts.postUpdate[0].postText)
-    let postsElements = props.posts.postsData.map(post => <Post message={post.postText} like={post.like} />)
+    let postsElements = props.posts.postsData.map((post, index) => <Post message={post.postText} like={post.like} key={index} />)
     return (
 
         <div>My posts
