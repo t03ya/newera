@@ -5,7 +5,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 
-let dialogRef = React.createRef();
+let dialogRef = React.createRef(); //tests
 
 let newDialog = () => {
     let text = dialogRef.current.value;
