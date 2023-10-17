@@ -7,7 +7,7 @@ import Profile from './components/Profile/Profile'
 import Dialogs from './components/Dialogs/Dialogs'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const App = (props) => {
+const App = (props) => { //testim
   return (
 
     <div className='app-wrapper'>
